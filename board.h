@@ -10,6 +10,7 @@
 
 /**
  * Class that can hold board information for boards with a grid layout
+ * @author Robbe Jaeken
  */
 class Board
 {

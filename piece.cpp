@@ -7,3 +7,6 @@ Piece::Piece(Color color) :
 
 }
 
+Piece::Color Piece::getColor() const {
+    return _color;
+}

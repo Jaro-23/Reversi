@@ -59,10 +59,18 @@ std::shared_ptr<Piece> Board::getPiece(int row, int column) const {
     return std::shared_ptr<Piece>{nullptr};
 }
 
+/**
+ * Receives the number of rows the board has
+ * @return The number of rows
+ */
 int Board::getRows() const {
     return _rows;
 }
 
+/**
+ * Receives the number of columns the board has
+ * @return The number of columns
+ */
 int Board::getColumns() const {
     return _columns;
 }
