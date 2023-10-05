@@ -1,4 +1,3 @@
-
 #include "board.h"
 
 Board::Board(int rows, int columns) :
@@ -28,7 +27,9 @@ void Board::reset() {
  * @param column The column in which the piece needs to be placed
  * @throws out_of_range When you give an invalid location
  */
-void Board::placePiece(std::shared_ptr<Piece> piece, int row, int column) {
+void Board::placePiece(std::shared_ptr<Piece> piece, Location loc) {
+    int row = loc.getRow();
+    int column = loc.getColumn();
     if (!validPosition(row, column))
         throw std::out_of_range("Piece coudn't be placed!");
     _board.at(row).at(column) = piece;
@@ -41,10 +42,11 @@ void Board::placePiece(std::shared_ptr<Piece> piece, int row, int column) {
  * @param column The column in which the piece needs to be placed
  * @throws out_of_range When you give an invalid location
  */
-void Board::removePiece(int row, int column) {
-    if (!validPosition(row, column))
-        throw std::out_of_range("Piece coudn't be placed!");
-    _board.at(row).at(column) = std::shared_ptr<Piece>{nullptr};
+void Board::removePiece(Location loc) {
+    int row = loc.getRow();
+    int column = loc.getColumn();
+    if (_board.at(row).at(column))
+        _board.at(row).at(column) = std::shared_ptr<Piece>{nullptr};
 }
 
 /**
@@ -53,10 +55,10 @@ void Board::removePiece(int row, int column) {
  * @param column The column where the requested piece is located
  * @return A shared pointer to a piece or nullptr
  */
-std::shared_ptr<Piece> Board::getPiece(int row, int column) const {
-    if (validPosition(row, column))
-        return _board.at(row).at(column);
-    return std::shared_ptr<Piece>{nullptr};
+std::shared_ptr<Piece> Board::getPiece(Location loc) const {
+    int row = loc.getRow();
+    int column = loc.getColumn();
+    return _board.at(row).at(column);
 }
 
 /**

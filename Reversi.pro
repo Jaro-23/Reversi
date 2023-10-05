@@ -10,14 +10,18 @@ CONFIG += c++17
 
 SOURCES += \
     board.cpp \
+    location.cpp \
     main.cpp \
     mainwindow.cpp \
-    piece.cpp
+    piece.cpp \
+    reversimovevalidator.cpp
 
 HEADERS += \
     board.h \
+    location.h \
     mainwindow.h \
-    piece.h
+    piece.h \
+    reversimovevalidator.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
